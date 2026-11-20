@@ -1,0 +1,98 @@
+/* ============ TOKENS ============ */
+:root{
+  --denim-900:#141F2B;
+  --denim-800:#1B2B3B;
+  --denim-700:#25415B;
+  --denim-500:#3D6790;
+  --denim-300:#7FA2C4;
+  --canvas-100:#F2EEE2;
+  --canvas-200:#E7E1D0;
+  --safety-400:#D7E639;
+  --safety-500:#C3D124;
+  --rivet-600:#A8562B;
+  --ink-900:#1B1B18;
+  --ink-600:#514E45;
+  --white:#FFFFFF;
+  --font-display:'Oswald', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'IBM Plex Mono', monospace;
+  --radius-s:4px;
+  --radius-m:10px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:84px;}
+body{
+  margin:0;
+  background:var(--canvas-100);
+  color:var(--ink-900);
+  font-family:var(--font-body);
+  line-height:1.5;
+}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,h4{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;margin:0;color:var(--denim-900);}
+p{margin:0;}
+button{font-family:inherit;cursor:pointer;}
+input,select{font-family:inherit;}
+a{color:inherit;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid var(--safety-400);
+  outline-offset:2px;
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+}
+
+/* ============ UTILIDADES COMPARTIDAS ============ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+@media (max-width:520px){.wrap{padding:0 18px;}}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--denim-500);
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 22px;border-radius:var(--radius-s);
+  font-family:var(--font-mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;
+  border:1px solid transparent;text-decoration:none;
+  transition:transform .12s ease, background .15s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--safety-400);color:var(--denim-900);font-weight:600;}
+.btn-primary:hover{background:var(--safety-500);}
+.btn-outline{background:transparent;color:var(--canvas-100);border-color:var(--denim-500);}
+.btn-outline:hover{border-color:var(--safety-400);color:var(--safety-400);}
+.section{padding:74px 0;}
+@media (max-width:520px){.section{padding:52px 0;}}
+.section.alt{background:var(--canvas-200);}
+.section-head{max-width:640px;margin-bottom:44px;}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:10px;}
+.section-head p{color:var(--ink-600);margin-top:12px;}
+
+/* Panel oscuro con la prenda (se usa en la tarjeta del catálogo y en el detalle) */
+.product-visual{
+  background:var(--denim-900);
+  padding:26px;
+  display:flex;align-items:center;justify-content:center;
+  min-height:230px;
+  position:relative;
+}
+.price-tab{
+  position:absolute;top:16px;right:16px;
+  font-family:var(--font-mono);
+  background:var(--safety-400);color:var(--denim-900);
+  font-size:.72rem;font-weight:700;
+  padding:5px 10px;border-radius:var(--radius-s);
+}
+.product-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+.product-title h3{font-size:1.35rem;color:var(--denim-900);}
+.product-title .base-price{font-family:var(--font-mono);color:var(--rivet-600);font-weight:600;font-size:.95rem;white-space:nowrap;}
+.product-desc{color:var(--ink-600);font-size:.92rem;}
+.btn-add{
+  display:block;
+  background:var(--denim-900);color:var(--canvas-100);
+  border-radius:var(--radius-s);padding:13px;text-align:center;text-decoration:none;
+  font-family:var(--font-mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+  border:none;width:100%;
+  transition:background .15s ease;
+}
+.btn-add:hover{background:var(--denim-700);}

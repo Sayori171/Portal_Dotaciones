@@ -1,0 +1,26 @@
+[
+  {
+    "id": "camisa",
+    "name": "Camisa Jean",
+    "description": "Camisa de jean industrial, manga larga, corte recto. Base ideal para estampar, bordar logo de empresa o reforzar con cinta reflectiva en mangas.",
+    "basePrice": 65000,
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "defaultSize": "M",
+    "addons": [
+      { "id": "print", "name": "Estampado", "description": "Logo o diseño estampado en el pecho.", "price": 15000, "effect": "print", "zones": ["print"] },
+      { "id": "embroidery", "name": "Bordado", "description": "Bordado de logo en bolsillo, mayor durabilidad.", "price": 25000, "effect": "embroidery", "zones": ["embroidery"] },
+      { "id": "tape", "name": "Cinta reflectiva", "description": "Refuerzo reflectivo en ambas mangas.", "price": 18000, "effect": "tape", "zones": ["tapeL", "tapeR"] }
+    ]
+  },
+  {
+    "id": "pantalon",
+    "name": "Pantalón Jean",
+    "description": "Pantalón de jean resistente para trabajo pesado, refuerzo en costuras. Se puede agregar cinta reflectiva, aplicada automáticamente en la bota.",
+    "basePrice": 75000,
+    "sizes": ["28", "30", "32", "34", "36", "38"],
+    "defaultSize": "30",
+    "addons": [
+      { "id": "tape", "name": "Cinta reflectiva en bota", "description": "Se ubica automáticamente en la parte baja de ambas piernas.", "price": 18000, "effect": "tape", "zones": ["tapeL", "tapeR"] }
+    ]
+  }
+]

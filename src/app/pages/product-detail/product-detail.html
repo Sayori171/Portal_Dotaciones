@@ -1,0 +1,90 @@
+<section class="section">
+  <div class="wrap">
+    <a routerLink="/" fragment="catalogo" class="back">← Volver al catálogo</a>
+
+    @if (product(); as p) {
+      <div class="detail">
+        <div class="visual-col">
+          <div class="product-visual">
+            <span class="price-tab">Desde {{ p.basePrice | cop }}</span>
+            <app-garment-svg [productId]="p.id" [activeAddons]="selectedAddons()" [scale]="1.5" />
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="product-title">
+            <h1>{{ p.name }}</h1>
+            <span class="base-price">{{ p.basePrice | cop }}</span>
+          </div>
+          <p class="product-desc">{{ p.description }}</p>
+
+          <div class="field-group">
+            <span class="field-label" id="lblTalla">Talla</span>
+            <div class="size-row" role="radiogroup" aria-labelledby="lblTalla">
+              @for (s of p.sizes; track s) {
+                <label class="size-opt" [class.selected]="size() === s">
+                  <input type="radio" name="talla" [value]="s" [checked]="size() === s" (change)="size.set(s)">{{ s }}
+                </label>
+              }
+            </div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Personalización</span>
+            <div class="addons">
+              @for (a of p.addons; track a.id) {
+                <label class="addon" [class.checked]="isSelected(a.id)">
+                  <input type="checkbox" [checked]="isSelected(a.id)" (change)="toggleAddon(a.id)">
+                  <span class="addon-copy"><strong>{{ a.name }}</strong><span>{{ a.description }}</span></span>
+                  <span class="addon-price">+{{ a.price | cop }}</span>
+                </label>
+              }
+            </div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Cantidad</span>
+            <div class="qty-control">
+              <button type="button" aria-label="Restar unidad" (click)="changeQty(-1)">−</button>
+              <input type="number" min="1" [value]="qty()" (input)="onQtyInput($event)" [attr.aria-label]="'Cantidad de ' + p.name">
+              <button type="button" aria-label="Sumar unidad" (click)="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <div class="subtotal-line">
+            <span>Subtotal prenda</span>
+            <strong>{{ subtotal() | cop }}</strong>
+          </div>
+
+          <button class="btn-add" type="button" (click)="addToCart(p)">
+            {{ added() ? 'Agregada ✓' : 'Agregar a cotización' }}
+          </button>
+
+          @if (cart.count() > 0) {
+            <p class="cart-note">
+              Llevas {{ cart.count() }} {{ cart.count() === 1 ? 'prenda' : 'prendas' }} en tu cotización.
+              <a routerLink="/cotizador">Ver cotización</a>
+            </p>
+          }
+
+          @if (others().length) {
+            <p class="cart-note">
+              ¿Necesitas otra prenda?
+              @for (o of others(); track o.id) {
+                <a [routerLink]="['/producto', o.id]">{{ o.name }}</a>
+              }
+            </p>
+          }
+        </div>
+      </div>
+    } @else if (product() === null) {
+      <div class="state">
+        <h1>Prenda no encontrada</h1>
+        <p>No existe ninguna prenda con el código «{{ id() }}».</p>
+        <a routerLink="/" fragment="catalogo" class="btn btn-primary">Ver catálogo</a>
+      </div>
+    } @else {
+      <p class="state-loading">Cargando prenda…</p>
+    }
+  </div>
+</section>
