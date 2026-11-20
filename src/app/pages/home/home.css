@@ -1,3 +1,0 @@
-.products{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
-@media (max-width:920px){.products{grid-template-columns:1fr;}}
-.state{color:var(--ink-600);font-family:var(--font-mono);font-size:.85rem;}
