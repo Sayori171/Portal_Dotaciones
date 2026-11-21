@@ -1,0 +1,6 @@
+:host{display:block;}
+svg{margin:0 auto;}
+.garment-zone{transition:fill .18s ease, stroke .18s ease, opacity .18s ease;}
+.garment-zone.active-print{fill:var(--rivet-600) !important;opacity:.55;}
+.garment-zone.active-embroidery{fill:var(--safety-400) !important;opacity:.85;}
+.garment-zone.active-tape{fill:var(--safety-400) !important;opacity:1;filter:drop-shadow(0 0 6px rgba(215,230,57,.7));}
