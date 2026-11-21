@@ -1,0 +1,36 @@
+<header class="site">
+  <div class="nav">
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <span class="mark">PD</span>
+      <span class="name">Portal de Dotaciones<small>Confección industrial &amp; dotación</small></span>
+    </a>
+
+    <a
+      routerLink="/cotizador"
+      class="cart-pill"
+      [attr.aria-label]="'Cotización: ' + cart.count() + ' prendas'"
+      (click)="closeMenu()"
+    >
+      <span class="dot">{{ cart.count() }}</span>
+      <span class="label">Cotización</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-controls="mainNav"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggleMenu()"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="mainNav" class="links" aria-label="Principal" [class.open]="menuOpen()">
+      <a routerLink="/" fragment="catalogo" (click)="closeMenu()">Catálogo</a>
+      <a routerLink="/cotizador" routerLinkActive="active" (click)="closeMenu()">Cotizador</a>
+      <a routerLink="/" fragment="proceso" (click)="closeMenu()">Proceso</a>
+      <a href="#contacto" (click)="goToContact($event)">Contacto</a>
+    </nav>
+  </div>
+</header>
